@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brokey-Poly Dice Roller</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe4c4;
+            color: #333;
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #8b0000;
+            text-shadow: 2px 2px #fff000;
+            margin-bottom: 20px;
+        }
+
+        label, select, button {
+            font-size: 1.2em;
+            margin: 10px;
+        }
+
+        select {
+            font-family: inherit;
+            background-color: #f8f8ff;
+            border: 2px dashed #8b0000;
+            padding: 5px;
+        }
+
+        button {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 #333;
+            font-size: 1.2em;
+        }
+
+        button:hover {
+            background-color: #ff6347;
+        }
+
+        .dice {
+            font-size: 80px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .broke-dice {
+            font-size: 3em;
+            transform: rotate(-10deg);
+            border: 1px solid #333;
+            padding: 10px;
+            background-color: #ffebcd;
+            box-shadow: 2px 2px #000000;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎲 Brokey-Poly Dice Roller 🎲</h1>
+    <label for="diceCount">Number of Dice:</label>
+    <select id="diceCount">
+        <option value="1">One</option>
+        <option value="2">Two</option>
+    </select>
+    <div class="dice" id="diceContainer">
+        <div id="dice1">🎲</div>
+    </div>
+    <button onclick="rollDice()">Roll</button>
+    <script>
+        function rollDice() {
+            const dice = ["🎲", "⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+            const diceCount = parseInt(document.getElementById("diceCount").value);
+            const diceContainer = document.getElementById("diceContainer");
+
+            diceContainer.innerHTML = "";
+
+            for (let i = 0; i < diceCount; i++) {
+                const result = Math.floor(Math.random() * 6) + 1;
+                const diceElement = document.createElement("div");
+                diceElement.textContent = dice[result];
+                diceElement.classList.add("broke-dice");
+                diceContainer.appendChild(diceElement);
+            }
+        }
+    </script>
+</body>
+</html>
